@@ -9,7 +9,7 @@
         #more(v-if="answers.length") 
             button.more-search#left(v-if="prev" @click='goPrev') 
                 strong &larr;
-            span#center {{ resultsToSee }} RESULTS
+            span#center {{ resultsToSee }} RESULTS LEFT TO SEE
             button.more-search#right(v-if="next" @click='goNext') 
                 strong &rarr;
         p#loader(v-if="loading") Loading... Be patient, it could take some time.
@@ -28,7 +28,8 @@ import axios from 'axios';
 export default {
     data(){
         return {
-            title: 'This is a page for beauty product search',
+            title: 'This is a page for\nbeauty product search',
+            //image: '../assets/beauty-products.jpg',
             image: '/img/beauty-products.9840c506.jpg',
             firstAnswers: [],
             results: [],
@@ -38,8 +39,6 @@ export default {
             loading: false,
             problem: false,
             zero: false
-            //image: '../../resources/beauty-products.jpg',
-            // /img/beauty-products.9840c506.jpg
         }
     },
     computed: {
@@ -142,8 +141,9 @@ $white = #FFF
         padding-top 7%
         h1
             text-align center
-            font 1.4em 
+            font 1.8em 
             font-weight bold
+            white-space break-spaces
     .total
         max-width 100%
 
@@ -151,18 +151,21 @@ $white = #FFF
     background $red
     color $white
 
-    .more-search
-        background $blue
-        padding 2%
-        border-radius 8%
-        font-size 1em 
     #more
         grid-column 2 / 3
         grid-row 1 / 2
         display grid
         grid-template-rows repeat(1, 1fr)
         grid-template-columns repeat(7, 1fr)
+        margin-top 15px
         height 50%
+        
+    .more-search
+        background $blue
+        padding 2%
+        border-radius 8%
+        font-size 1em 
+    
     #left 
         grid-column 3 / 4
         grid-row 1 / 2
@@ -189,6 +192,7 @@ $white = #FFF
         padding 0
         text-align left
         font-size 1.4em
+        animation fade .5s ease
 
     #form
         margin 0
@@ -217,10 +221,32 @@ $white = #FFF
         font-size 1.4em
         
     .result
-        margin 5px 0 0 0
+        margin 0
+        padding 0
+        font-size 1.4em
         font-weight bold
+        height 1.1em
+        animation enter .5s ease
+        
         span
             font-weight 200
+            
+@keyframes fade {
+    from {
+       opacity 1
+    }
+    to {
+       opacity 0 
+    }
+}
+@keyframes enter {
+    from {
+       opacity 0 
+    }
+    to {
+       opacity 1  
+    }
+}
 
 @media (max-width: 767px) {
     #essay {
