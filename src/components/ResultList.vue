@@ -27,7 +27,7 @@ export default {
 }
 @media (min-width: 768px) {
     #list {
-        grid-column: 2 / 4
+        grid-column: 2 / 5
         grid-row: 2 / 4
     }  
 }  
