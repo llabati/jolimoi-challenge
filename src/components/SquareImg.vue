@@ -1,5 +1,5 @@
 <template lang="pug">
-//img(src="../../resources/beauty-products.jpg", alt="beauty products").total
+//img(src="../assets/beauty-products.jpg", alt="beauty products").total
 img(:src='image', alt="beauty products").total
 </template>
 
