@@ -7,7 +7,7 @@
         search-bar(@new-search="getResponseFromSearch($event)")
         result-list(:results="results")
         #more(v-if="answers.length") 
-            button.more-search#left(v-if="prev"@click='goPrev') 
+            button.more-search#left(v-if="prev" @click='goPrev') 
                 strong &larr;
             span#center {{ resultsToSee }} RESULTS
             button.more-search#right(v-if="next" @click='goNext') 
