@@ -12,8 +12,7 @@
             }
         },
         methods: {
-            send(){
-                
+            send(){              
                 console.log(this.query)
                 this.$emit('new-search', this.query)
             }
