@@ -1,6 +1,6 @@
 <template lang="pug">
 p.result
-    strong &bull; {{ item.name }}
+    strong &bull; {{ item.name }} -
     span  {{ item.brand }}
 </template>
 
