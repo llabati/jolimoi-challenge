@@ -43,15 +43,24 @@ export default {
     },
     computed: {
         resultsToSee(){
-            if (this.answers.length - start < 0) return 0
-            return this.answers.length - start
+            if (this.answers.length - this.start < 0) return 0
+            return this.answers.length - this.start
         },
         answers(){
             return this.firstAnswers.sort( (a, b) => a.name - b.name )
+        },
+        first(){
+            return this.answers[0]
+        },
+        last(){
+            return this.answers[this.answers.length-1]
         }
     },
     methods: {
         async getResponseFromSearch($event){
+            this.results = []
+            this.zero = false
+            this.problem = false
             this.loading = true
             await axios
                 .get('https://cors-anywhere.herokuapp.com/https://skincare-api.herokuapp.com/product?q=' + $event)
@@ -60,53 +69,53 @@ export default {
                     this.problem = true
                     console.log(error.message)
                 })
+            this.loading = false
             if (!this.firstAnswers.length) this.zero = true
             else {
-                this.cutTheList(this.firstAnswers, this.results, 0, 'right')
+                this.cutTheList('right')
                 return this.results
                 } 
                 
         },
-        cutTheList(origin, destination, start, direction){
+        cutTheList(direction){
             this.prev = true
             this.next = true
-            let i = start
-            let j = direction === 'right' ? start + 5 : start - 5 
-            this.start = j
-            this.first = origin[0]
-            this.last = origin[origin.length-1]
+            let i = this.start 
+            
             if (direction === 'right') {
-                while (i < j && origin[i]) {
-                    destination.push(origin[i])
+                let j = this.answers.length < this.start + 5 ? this.answers.length : this.start + 5
+                this.start = j
+                while (i < j && this.answers[i]) {
+                    this.results.push(this.answers[i])
                     i++
                 }
-                if (destination.includes(this.last)) {
-                    this.next = false
-                }
-
             }
             else {
-                while (i-1 > j && origin[i-1]) {
-                    destination.push(origin[i-1])
+                let j = this.start - 5 < 0 ? 0 : this.start - 5
+                this.start = j
+                --i
+                while (i >= j && this.answers[i]) {
+                    this.results.push(this.answers[i])
                     i--
                 }
-                if (destination.includes(this.first)) {
+            }
+            if (this.results.includes(this.first)) {
                     this.prev = false
                 }
-            }
-            return destination
+                if (this.results.includes(this.last)) {
+                    this.next = false
+                }
+            return this.results
         },
-        sortTheList(){
-            
-        },
+        
         goPrev(){
             this.results = []
-            this.cutTheList(this.answers, this.results, this.start, 'left')
+            this.cutTheList('left')
             return this.results
         },
         goNext(){
             this.results = []
-            this.cutTheList(this.answers, this.results, this.start, 'right')
+            this.cutTheList('right')
             return this.results
         }
     },
