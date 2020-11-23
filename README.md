@@ -1,67 +1,24 @@
 # Front-End Developer Interview Challenge
 
-This goal of this task is to assess your technical skills as a developer, your capacity to work with specifications and your ability to use best practices.
+## Framework
+I used Vue.js 2, following your base. 
 
-Don't hesitate to ask questions if necessary. You can also make assumptions when necessary as long as you detail them.
+My main component is Essay.vue, which handles API calls and feeds props to its child components.
 
-Use any online resources you see fit.
+## Two problems : 
+- I couldn't load the Effra font on github, probably due to copyright issues. I replaced it with the PT Sans font.
+- I wanted to transmit in prop the source of the "beauty-products" image. but this one is coded, it only works on localhost/8080 and 8083. I put in comment the hard-coded src if needed. 
 
-## Evaluation
+## HTML and CSS
+For the HTML, I used Pug, for its readability.
 
-You will be evaluated both on the final result, the choices you made on how to achieve it and the respect of the best practices.
+For CSS, I worked with Stylus. But this one caused a crash of the application, probably because of my attempt to install Jest in it. Since then, even without Jest, the console receives many warnings and error messages from Stylus. In case of problem, open the application on the repo /llabati/jolimoi-challenge-css. There is only classic CSS.
 
-## Context
+I used the GRID module for all element placement. I find it is the safest and simplest solution to make sure that everything stays in the right place, even in a "responsive" situation.
 
-A beauty shop wants to provide customers with an easy way of finding specific products.
+## API call
+I used AXIOS, which remains the most obvious solution. 
 
-## Proposed Solution
+Since the answers usually consist of more than 10 items, I added navigation buttons to your layout, as well as a display of 5 results (not 4).
 
-A web application that allows customers to search for a product using a search form.
 
-The given starting code is in Vue.js but you can use React if you are more comfortable with it.
-
-## Your task
-
-Implement a simple proof-of-concept front-end application based on the design sketches provided by the designer.
-
-### Resources
-
-Images and design sketches are located in the resources folder.
-Colours are #55D7FF and #DB0992.
-
-### API
-
-The API that will be used is the community based test API [Skin Care API](https://github.com/LauraRobertson/skincareAPI).
-
-The pagination feature of this API is not working. If you encounter any other problem with it, don't hesitate to contact us.
-
-Because of CORS issues, please use the following URL to do a search on the API: 
-```https://cors-anywhere.herokuapp.com/https://skincare-api.herokuapp.com/product?q=[YOUR SEARCH STRING]```
-
-#### Desktop
-
-![Desktop](resources/Desktop.jpg)
-
-#### Mobile
-
-![Mobile](resources/TabletPortrait.jpg)
-
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
