@@ -57,6 +57,7 @@ export default {
         }
     },
     methods: {
+        // make the API call
         async getResponseFromSearch($event){
             this.results = []
             this.zero = false
@@ -70,6 +71,8 @@ export default {
                     console.log(error.message)
                 })
             this.loading = false
+            
+            // prepare the display of the results or the error
             if (!this.firstAnswers.length) this.zero = true
             else {
                 this.cutTheList('right')
@@ -77,6 +80,8 @@ export default {
                 } 
                 
         },
+        
+        // prepare arrays of 5 items 
         cutTheList(direction){
             this.prev = true
             this.next = true
