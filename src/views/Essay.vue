@@ -47,7 +47,7 @@ export default {
             return this.answers.length - this.start
         },
         answers(){
-            return this.firstAnswers.sort( (a, b) => a.name - b.name )
+            return this.firstAnswers.sort( (a, b) => a.brand - b.brand )
         },
         first(){
             return this.answers[0]
