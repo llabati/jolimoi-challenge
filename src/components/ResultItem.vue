@@ -1,7 +1,7 @@
 <template lang="pug">
 p.result
-    strong &bull; {{ item.name }} -
-    span  {{ item.brand }}
+    strong &bull; {{ item.brand }} -
+    span  {{ item.name }}
 </template>
 
 <script>
